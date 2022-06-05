@@ -1,0 +1,18 @@
+[package]
+name = "javascript-vm"
+version = "0.1.0"
+authors = ["aaron"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = {version = "0.2.63", features = ["serde-serialize"]}
+boa_engine = {version = "0.14.0", features = ["console"]}
+getrandom = { version = "0.2", features = ["js"] }
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = 3
+lto = true
